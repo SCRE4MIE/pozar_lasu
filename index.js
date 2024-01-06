@@ -13,6 +13,7 @@ let windSpeedMultiplier = 2;
 let windDirection = 'N'
 let fireDmg = 0.01;
 let fireTempMultiplier = 0.1;
+let humidity = 0.2 // 20%
 
 let initialFireTreeHealth = 600;
 let pineTreeHealth = 350;
@@ -87,6 +88,7 @@ createMapForm.addEventListener('submit', (e) => {
     pineTreeHealth = parseInt(dataForm.get("pineTreeHealth"));
     oakTreeHealth = parseInt(dataForm.get("oakTreeHealth"));
     mapleTreeHealth = parseInt(dataForm.get("mapleTreeHealth"));
+    humidity = parseFloat(dataForm.get("humidity"));
 
 })
 
@@ -169,6 +171,7 @@ class GroundObject {
         this.burning = false;
         this.is_not_burning = false;
         this.isTree = false;
+        this.humidity = humidity;
         this.decisionType();
     }
 
@@ -217,7 +220,8 @@ class GroundObject {
         // calculate burning per loop
         if (this.burning === true && this.is_not_burning !== true) {
             this.fireTemp += (this.fireTemp * fireTempMultiplier);
-            this.health -= fireDmg * this.fireTemp;
+            this.health -= (fireDmg * this.fireTemp) + this.humidity;
+            this.humidity -= this.humidity * this.fireTemp *0.01;
             if (this.health <= 0) {
                 this.hex_color = '#000000' // make it black ( burned )
                 this.is_not_burning = true; // cannot burn anymore
