@@ -35,25 +35,33 @@
       <div class="rectangle-wrapper">
         <div class="rectangle-color rectangle-color-pine-tree"></div>
         <span>SOSNA</span>
+        <label for="pineTreeHealth">Życie drzewa:</label>
+        <input id="pineTreeHealth" name="pineTreeHealth" type="number" step="1" value="350">
       </div>
       <div class="rectangle-wrapper">
         <div class="rectangle-color rectangle-color-spruce"></div>
         <span>ŚWIERK</span>
+        <label for="spruceTreeHealth">Życie drzewa:</label>
+        <input id="spruceTreeHealth" name="spruceTreeHealth" type="number" step="1" value="500">
       </div>
       <div class="rectangle-wrapper">
         <div class="rectangle-color rectangle-color-oak"></div>
         <span>DĄB</span>
+        <label for="oakTreeHealth">Życie drzewa:</label>
+        <input id="oakTreeHealth" name="oakTreeHealth" type="number" step="1" value="1000">
       </div>
       <div class="rectangle-wrapper">
         <div class="rectangle-color rectangle-color-maple"></div>
         <span>KLON</span>
+        <label for="mapleTreeHealth">Życie drzewa:</label>
+        <input id="mapleTreeHealth" name="mapleTreeHealth" type="number" step="1" value="700">
       </div>
       <div class="rectangle-wrapper">
         <div class="rectangle-color rectangle-color-fire"></div>
         <span>OGIEŃ</span>
       </div>
-      <label for="initialFireTreeHeath">Życie inicjalnych podpalonych drzew:</label>
-      <input id="initialFireTreeHeath" name="initialFireTreeHeath" type="number" value="600">
+      <label for="initialFireTreeHealth">Życie inicjalnych podpalonych drzew:</label>
+      <input id="initialFireTreeHealth" name="initialFireTreeHealth" type="number" step="1" value="600">
       <button type="submit">Zatwierdź</button>
       <button id="goToSimulationBtnID" type="button">Przejdź do symulacji</button>
     </form>
@@ -81,6 +89,11 @@
       <input id="fireTempMultiplier" name="fireTempMultiplier" type="number" step="0.01" value="0.1">
       <button type="submit">Zatwierdź</button>
     </form>
+    <h4>Kierunek wiatru:</h4>
+    <div id="windArrowID" class="wind wind-N">
+      <div class="wind-arrow"></div>
+      <div class="wind-arrow-bottom"></div>
+    </div>
   </div>
 </div>
 

@@ -13,7 +13,12 @@ let windSpeedMultiplier = 2;
 let windDirection = 'N'
 let fireDmg = 0.01;
 let fireTempMultiplier = 0.1;
-let initialFireTreeHeath = 600;
+
+let initialFireTreeHealth = 600;
+let pineTreeHealth = 350;
+let spruceTreeHealth = 500;
+let oakTreeHealth = 1000;
+let mapleTreeHealth = 700;
 // ===========================================================================
 
 // drawing map variables
@@ -72,17 +77,28 @@ canvas.addEventListener('mouseleave', () => {
 // forms and forms event listeners
 const createMapForm = document.getElementById("mapCreatorForm");
 const simulationForm = document.getElementById("simulationForm");
+const windArrow = document.getElementById("windArrowID");
 createMapForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const dataForm = new FormData(e.target);
     ctx.lineWidth = dataForm.get("lineWidth");
-    initialFireTreeHeath = parseFloat(dataForm.get("initialFireTreeHeath"));
+    initialFireTreeHealth = parseInt(dataForm.get("initialFireTreeHealth"));
+    spruceTreeHealth = parseInt(dataForm.get("spruceTreeHealth"));
+    pineTreeHealth = parseInt(dataForm.get("pineTreeHealth"));
+    oakTreeHealth = parseInt(dataForm.get("oakTreeHealth"));
+    mapleTreeHealth = parseInt(dataForm.get("mapleTreeHealth"));
+
 })
 
 simulationForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const dataForm = new FormData(e.target);
     windDirection = dataForm.get("windDirection");
+    // change arrow direction in HTML
+    windArrow.classList = [];
+    windArrow.classList.add('wind');
+    windArrow.classList.add(`wind-${windDirection}`);
+    // =======
     windSpeedMultiplier = parseFloat(dataForm.get("windSpeedMultiplier"));
     fireDmg = parseFloat(dataForm.get("fireDmg"));
     fireTempMultiplier = parseFloat(dataForm.get("fireTempMultiplier"));
@@ -165,28 +181,28 @@ class GroundObject {
             this.is_not_burning = true;
         } else if (this.hex_color === '#a7ff0d') {
             this.type_tree = 'pine_tree';
-            this.health = 350;
+            this.health = pineTreeHealth;
             this.tempToLightTheFire = 300;
             this.isTree = true;
         } else if (this.hex_color === '#0dff86') {
             this.type_tree = 'spruce';
-            this.health = 500;
+            this.health = spruceTreeHealth;
             this.tempToLightTheFire = 600;
             this.isTree = true;
         } else if (this.hex_color === '#00572a') {
             this.type_tree = 'oak';
-            this.health = 1000;
+            this.health = oakTreeHealth;
             this.tempToLightTheFire = 600;
             this.isTree = true;
         } else if (this.hex_color === '#f7ff02') {
             this.type_tree = 'maple';
-            this.health = 700;
+            this.health = mapleTreeHealth;
             this.tempToLightTheFire = 600;
             this.isTree = true;
         } else if (this.hex_color === '#fa0000') {
             this.fireTemp = 100;
             this.burning = true;
-            this.health = initialFireTreeHeath;
+            this.health = initialFireTreeHealth;
             this.tempToLightTheFire = 100;
             this.isTree = true;
         } else {
