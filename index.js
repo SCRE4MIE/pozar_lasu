@@ -20,6 +20,11 @@ let pineTreeHealth = 350;
 let spruceTreeHealth = 500;
 let oakTreeHealth = 1000;
 let mapleTreeHealth = 700;
+
+let pineTempToFire = 300;
+let spruceTempToFire = 600;
+let oakTempToFire = 600;
+let mapleTempToFire = 600;
 // ===========================================================================
 
 // drawing map variables
@@ -89,6 +94,11 @@ createMapForm.addEventListener('submit', (e) => {
     oakTreeHealth = parseInt(dataForm.get("oakTreeHealth"));
     mapleTreeHealth = parseInt(dataForm.get("mapleTreeHealth"));
     humidity = parseFloat(dataForm.get("humidity"));
+
+    pineTempToFire = parseInt(dataForm.get("pineTempToFire"));
+    spruceTempToFire = parseInt(dataForm.get("spruceTempToFire"));
+    oakTempToFire = parseInt(dataForm.get("oakTempToFire"));
+    mapleTempToFire = parseInt(dataForm.get("mapleTempToFire"));
 
 })
 
@@ -185,22 +195,22 @@ class GroundObject {
         } else if (this.hex_color === '#a7ff0d') {
             this.type_tree = 'pine_tree';
             this.health = pineTreeHealth;
-            this.tempToLightTheFire = 300;
+            this.tempToLightTheFire = pineTempToFire;
             this.isTree = true;
         } else if (this.hex_color === '#0dff86') {
             this.type_tree = 'spruce';
             this.health = spruceTreeHealth;
-            this.tempToLightTheFire = 600;
+            this.tempToLightTheFire = spruceTempToFire;
             this.isTree = true;
         } else if (this.hex_color === '#00572a') {
             this.type_tree = 'oak';
             this.health = oakTreeHealth;
-            this.tempToLightTheFire = 600;
+            this.tempToLightTheFire = oakTempToFire;
             this.isTree = true;
         } else if (this.hex_color === '#f7ff02') {
             this.type_tree = 'maple';
             this.health = mapleTreeHealth;
-            this.tempToLightTheFire = 600;
+            this.tempToLightTheFire = mapleTempToFire;
             this.isTree = true;
         } else if (this.hex_color === '#fa0000') {
             this.fireTemp = 100;
