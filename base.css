@@ -1,0 +1,60 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+canvas {
+    border: 1px solid blue;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px
+}
+
+.main-wrapper-col {
+
+}
+ .custom-form {
+     display: flex;
+     flex-direction: column;
+     justify-content: start;
+     align-content: start;
+     gap: 10px;
+ }
+
+ .hide-form {
+     display: none;
+ }
+
+ .rectangle-wrapper{
+     display: flex;
+     flex-direction: row;
+ }
+ .rectangle-color {
+     width: 20px;
+     height: 20px;
+ }
+.rectangle-color-water{
+    background-color: #4378fd;
+}
+.rectangle-color-dirt{
+    background-color: #a54f2a;
+}
+.rectangle-color-pine-tree{
+    background-color: #a7ff0d;
+}
+.rectangle-color-spruce {
+    background-color: #0dff86;
+}
+.rectangle-color-oak {
+    background-color: #00572a;
+}
+.rectangle-color-maple {
+    background-color: #f7ff02;
+}
+.rectangle-color-fire {
+    background-color: #fa0000;
+}

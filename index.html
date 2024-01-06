@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pożar Lasu - automat komórkowy</title>
+   <link href="base.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Symulacja "Pożar Lasu"</h1>
+<h3>Twórca: Mateusz Baran</h3>
+<h4>Numer indeksu: 155620</h4>
+<div class="main-wrapper">
+  <div class="main-wrapper-col">
+    <h2>Border</h2>
+    <p>Liczba drzew żywych: <span id="countLiveTreesID">0</span></p>
+    <p>Liczba drzew zapalonych: <span id="countBurningTreesID">0</span></p>
+    <p>Liczba drzew spalonych: <span id="countDeathTreesID">0</span></p>
+    <p>Generacja: <span id="generationID">0</span></p>
+    <canvas id="border" width="600" height="600"></canvas>
+  </div>
+  <div class="main-wrapper-col">
+    <form id="mapCreatorForm" class="custom-form">
+      <h2>Przygotowanie mapy</h2>
+      <label for="lineWidth">Grubość rysowanej linii</label>
+      <input id="lineWidth" name="lineWidth" type="number" value="10">
+      <label>Rodzaj terenu</label>
+      <div class="rectangle-wrapper">
+        <div class="rectangle-color rectangle-color-water"></div>
+        <span>WODA</span>
+      </div>
+      <div class="rectangle-wrapper">
+        <div class="rectangle-color rectangle-color-dirt"></div>
+        <span>ZIEMIA</span>
+      </div>
+      <div class="rectangle-wrapper">
+        <div class="rectangle-color rectangle-color-pine-tree"></div>
+        <span>SOSNA</span>
+      </div>
+      <div class="rectangle-wrapper">
+        <div class="rectangle-color rectangle-color-spruce"></div>
+        <span>ŚWIERK</span>
+      </div>
+      <div class="rectangle-wrapper">
+        <div class="rectangle-color rectangle-color-oak"></div>
+        <span>DĄB</span>
+      </div>
+      <div class="rectangle-wrapper">
+        <div class="rectangle-color rectangle-color-maple"></div>
+        <span>KLON</span>
+      </div>
+      <div class="rectangle-wrapper">
+        <div class="rectangle-color rectangle-color-fire"></div>
+        <span>OGIEŃ</span>
+      </div>
+      <label for="initialFireTreeHeath">Życie inicjalnych podpalonych drzew:</label>
+      <input id="initialFireTreeHeath" name="initialFireTreeHeath" type="number" value="600">
+      <button type="submit">Zatwierdź</button>
+      <button id="goToSimulationBtnID" type="button">Przejdź do symulacji</button>
+    </form>
+
+    <form id="simulationForm" class="custom-form hide-form">
+      <h2>Ustawienia symulacji</h2>
+      <button type="button" id="startBtn">Start symulacji</button>
+      <button type="button" id="stopBtn">Stop symulacja</button>
+      <label for="windDirection">Wybierz kierunek wiatru:</label>
+      <select name="windDirection" id="windDirection">
+        <option value="N">N</option>
+        <option value="NE">NE</option>
+        <option value="NW">NW</option>
+        <option value="E">E</option>
+        <option value="W">W</option>
+        <option value="S">S</option>
+        <option value="SE">SE</option>
+        <option value="SW">SW</option>
+      </select>
+      <label for="windSpeedMultiplier">Mnożnik prędkości wiatru</label>
+      <input id="windSpeedMultiplier" name="windSpeedMultiplier" type="number" step="0.01" value="2">
+      <label for="fireDmg">Obrażenia od ognia co iterację pętli</label>
+      <input id="fireDmg" name="fireDmg" type="number" step="0.01" value="0.01">
+      <label for="fireTempMultiplier">Mnożnik temperatury ognia</label>
+      <input id="fireTempMultiplier" name="fireTempMultiplier" type="number" step="0.01" value="0.1">
+      <button type="submit">Zatwierdź</button>
+    </form>
+  </div>
+</div>
+
+</body>
+<script src="index.js"></script>
+</html>
